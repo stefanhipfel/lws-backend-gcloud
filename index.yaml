@@ -1,0 +1,8 @@
+indexes:
+
+- kind: Comment
+  properties:
+  - name: blog_id
+    direction: asc
+  - name: created_on
+    direction: asc

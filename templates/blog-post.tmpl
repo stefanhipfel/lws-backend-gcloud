@@ -1,0 +1,297 @@
+{{define "blog"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
+	<meta name="twitter:widgets:theme" content="light">
+	<meta property="og:title" content="lens wide shut | photography blog" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="{{.CoverPhoto}}" />
+	<meta property="og:description" content="Blog posts by lens wide photography" />
+	<title>lens wide shut | photography</title>
+	<link rel="shortcut icon" type="image/x-icon" href="images/theme-mountain-favicon.ico">
+
+	<!-- Font -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7CLato:300,400,700' rel='stylesheet' type='text/css'>
+	
+	<!-- Css -->
+	<link rel="stylesheet" href="../css/core.min.css" />
+	<link rel="stylesheet" href="../css/skin.css" />
+
+	<!--[if lt IE 9]>
+    	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body class="shop single-post">
+
+	<!-- Side Navigation Menu -->
+	<aside class="side-navigation-wrapper enter-right" data-no-scrollbar data-animation="push-in">
+		<div class="side-navigation-scroll-pane">
+			<div class="side-navigation-inner">
+				<div class="side-navigation-header">
+					<div class="navigation-hide side-nav-hide">
+						<a href="#">
+							<span class="icon-cancel medium"></span>
+						</a>
+					</div>
+				</div>
+				<nav class="side-navigation">
+					<ul>
+						<li>
+							<a href="/" class="contains-sub-menu">Home</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="side-navigation-footer">
+					<p class="copyright no-margin-bottom">&copy; 2014 THEMEMOUNTAIN.</p>
+				</div>
+			</div>
+		</div>
+	</aside>
+	<!-- Side Navigation Menu End -->
+
+	<div class="wrapper reveal-side-navigation">
+		<div class="wrapper-inner">
+
+			<!-- Header -->
+			<header class="header header-fixed header-fixed-on-mobile header-transparent" data-bkg-threshold="100" data-compact-threshold="100">
+				<div class="header-inner">
+					<div class="row nav-bar">
+						<div class="column width-12 nav-bar-inner">
+							<div class="logo">
+								<div class="logo-inner" style="font-family: RobotoMonoForPowerline-Light">
+									<a href="/"><img src="../logos/logo-dark.svg" alt="lens wide shut" /></a>
+									<a href="/"><img src="../logos/logo.svg" alt="lens wide shut" /></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- Header End -->
+
+			<!-- Content -->
+			<div class="content clearfix">
+
+				<!-- Intro Title Section 2 -->
+				<div class="section-block intro-title-2 intro-title-2-4" style="background-image: url({{.CoverPhoto}});">
+					<div class="title-overlay">
+						<div class="row">
+							<div class="column width-12">
+								<div class="title-container">
+									<div class="title-container-inner">
+										<h1 class="inline no-margin-bottom">{{.Blog.Title}}</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Intro Title Section 2 End -->
+
+				<div class="section-block clearfix no-padding">
+					<div class="post-info boxed">
+						<div class="row">
+							<div class="column width-12">
+								<span class="post-date">{{.Blog.FormattedDate}}</span>/<span class="post-autor">By <a href="#">{{.Blog.User.Name}}</a></span>/<span class="post-love"><a href="/like/{{.Blog.ID}}" class="post-love"><span class="icon-heart">{{len .Like.Likes}}</span></a></span>
+								<span><div id="google_translate_element"></div></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<!-- Content Inner -->
+						<div class="column width-9 push-3 content-inner blog-single-post">
+							<article class="post">
+								<!--
+								<div class="post-media">
+									<div class="video-container">
+										<iframe src="http://player.vimeo.com/video/45661116?title=0&amp;byline=0&amp;portrait=0&amp;color=3fc5e5&amp;loop=1" width="825" height="463"></iframe>
+									</div>
+								</div>
+								-->
+								<div class="post-content">
+									{{.Blog.Text}}
+								</div>
+							</article>
+							
+							<!-- Post Comments -->
+							<div class="post-comments">
+								{{template "comment" .}}
+							</div>
+
+							<div class="post-comment-respond">
+								<h3 class="reply-title">Leave a Comment</h3>
+								<form class="comment-form" action="/comments" method="post" novalidate>
+									<div class="row">
+										<div class="column width-4">
+											<input type="text" name="fname" class="form-name form-element" placeholder="Name*" tabindex="1" required>
+										</div>
+										<div class="column width-4">
+											<input type="email" name="email" class="form-email form-element" placeholder="Email*" tabindex="3" required>
+										</div>
+										<div class="column width-4">
+											<input type="text" name="website" class="form-website form-element" placeholder="Website" tabindex="4">
+										</div>
+										<div class="column width-6">
+											<input type="text" name="honeypot" class="form-honeypot form-element">
+										</div>
+									</div>
+									<input name="blogId" type="hidden" value="{{.Blog.ID}}">
+									<div class="row">
+										<div class="column width-12">
+											<textarea name="message" class="form-message form-element" placeholder="Message*" tabindex="5" required></textarea>
+											<input type="submit" value="Post Comment" class="form-submit button medium bkg-black bkg-hover-theme color-white color-hover-white no-margin-bottom">
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- Content Inner End -->
+
+						<!-- Sidebar -->
+						<aside class="column width-3 pull-9 sidebar left">
+							<div class="sidebar-inner">
+								<div class="widget">
+									<h3 class="widget-title">Find Something</h3>
+									<div class="search-form-container site-search">
+										<form action="#" method="get" novalidate>
+											<div class="row">
+												<div class="column width-12">
+													<div class="field-wrapper">
+														<input type="text" name="search" class="form-search form-element" placeholder="type &amp; hit enter...">
+														<span class="border"></span>
+													</div>
+												</div>
+											</div>
+										</form>
+										<div class="form-response"></div>
+									</div>
+								</div>
+								<div class="widget">
+									<h3 class="widget-title">Categories</h3>
+									<ul>
+										<li><a href="#">Art</a></li>
+										<li><a href="#">Vintage</a></li>
+										<li><a href="#">Photography</a></li>
+										<li><a href="#">Illustration</a></li>
+										<li><a href="#">Design</a></li>
+										<li><a href="#">Conceptual</a></li>
+										<li><a href="#">Music</a></li>
+									</ul>
+								</div>
+								<div class="widget">
+									<div class="box bkg-grey-ultralight mb-50">
+										<h3 class="widget-title">About</h3>
+										<p><strong>Lens Wide Shut Blog<p>
+									</div>
+								</div>
+								<div class="widget">
+									<h3 class="widget-title">Recent Posts</h3>
+									<ul class="list-group">
+										<li>
+											<span class="post-info"><span class="post-date">18 OCT 17 21:52</span></span>
+											<a href="#">El Poder De La Imagen</a>
+										</li>
+									</ul>
+								</div>
+								<div class="widget">
+									<h3 class="widget-title">Tweets</h3>
+									<!-- twitter -->
+									<a class="twitter-timeline" href="https://twitter.com/lens_wide_shut?ref_src=twsrc%5Etfw">Tweets by lens_wide_shut</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+								</div>
+							</div>
+						</aside>
+						<!-- Sidebar End -->
+					</div>
+				</div>
+
+				<!-- Pagination Section 5 -->
+				<div class="section-block pagination-3">
+					<div class="row">
+						<div class="column width-9 push-3">
+							<ul>
+								<li><a class="pagination-previous icon-left-open" href="#"><span class="icon-left-open-mini"></span></a></li>
+								<li><a class="pagination-next disabled" href="#"><span class="icon-right-open-mini"></span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Pagination Section 5 End -->
+				
+			</div>
+			<!-- Content End -->
+
+			<!-- Footer -->
+			<footer class="footer">
+				<div class="footer-top">
+					<div class="row flex">
+						<div class="column width-6">
+							<div class="widget">
+								<h4 class="widget-title weight-light">About</h4>
+								<p><strong>Lens Wide Shut Photography Blog<p>
+							</div>
+						</div>
+						<div class="column width-6">
+							<div class="widget">
+								<h4 class="widget-title">Get Notified</h4>
+								<p>Want to be notified on updates and news? Just sign up and we'll send you a notification by email.</p>
+								<div class="signup-form-container">
+									<form class="signup-form" action="/subscribe" method="post" novalidate>
+										<div class="row">
+											<div class="column width-8">
+												<div class="field-wrapper">
+													<input type="email" name="email" class="form-email form-element" placeholder="Email address" tabindex="2" required>
+												</div>
+											</div>
+											<div class="column width-4">
+												<input type="submit" value="Signup" class="form-submit button border-grey bkg-hover-grey color-white color-hover-white">
+											</div>
+										</div>
+										<input type="text" name="honeypot" class="form-honeypot form-element">
+									</form>
+									<div class="form-response show"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<div class="row">
+						<div class="column width-12">
+							<div class="footer-bottom-inner center">
+								<p class="copyright pull-left clear-float-on-mobile">
+									&copy; ThemeMountain. All Rights Reserved. <a href="#">Terms & Conditions</a> | <a href="#">Cookie policy</a>
+								</p>
+								<ul class="social-list list-horizontal pull-right clear-float-on-mobile">
+									<li><a href="https://twitter.com/lens_wide_shut"><span class="icon-twitter small"></span></a></li>
+									<li><a href="https://www.facebook.com/lens.wide.shut.de/"><span class="icon-facebook small"></span></a></li>
+									<li><a href="#"><span class="icon-youtube small"></span></a></li>
+									<li><a href="#"><span class="icon-vimeo small"></span></a></li>
+									<li><a href="https://www.instagram.com/lens.wide.shut/"><span class="icon-instagram small"></span></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- Footer End -->
+
+		</div>
+	</div>
+
+	<!-- Js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
+	<script src="../js/timber.master.min.js"></script>
+	<script src="../js/blog.js"></script>
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+		new google.translate.TranslateElement({pageLanguage: 'es', includedLanguages: 'de,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, multilanguagePage: true}, 'google_translate_element');
+		}
+	</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
+{{end}}

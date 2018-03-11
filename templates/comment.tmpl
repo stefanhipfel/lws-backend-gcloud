@@ -1,0 +1,41 @@
+{{define "comment"}}
+<h3 class="comments-title">{{len .Comments}} Comments</h3>
+<div class="comments">
+    <ul class="comment-list">
+        {{range .Comments}}
+        <li>
+            <article class="comment">
+                <div class="user-avatar">
+                    <img src="../images/blog/bio-avatar.jpg" alt="Avatar"/>
+                </div>
+                <div class="comment-content">
+                    <h5 class="name">{{.Name}}</h5>
+                    <div class="comment-meta">
+                        <span class="post-date">{{.FormattedDate}}</span>/<a href="#" class="comment-reply-link">Reply</a>            
+                    </div>
+                    <p>{{.Message}}</p>
+                </div>
+            </article>
+            <ul>
+                {{range .Replies}}
+                <li>
+                    <article class="comment">
+                        <div class="user-avatar">
+                            <img src="images/blog/comment-avatar-3.jpg" alt="Avatar"/>
+                        </div>
+                        <div class="comment-content">
+                            <h5 class="name">{{.Name}}</h5>
+                            <div class="comment-meta">
+                                <span class="post-date">{{.FormattedDate}}</span>/<a href="#" class="comment-reply-link">Reply</a>            
+                            </div>
+                            <p>{{.CreatedOn}}</p>
+                        </div>
+                    </article>
+                </li>
+                {{end}}
+            </ul>
+        </li>
+        {{end}}
+    </ul>
+</div>
+{{end}}
